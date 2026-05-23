@@ -1,0 +1,6 @@
+# Executables and Libraries
+*.exe
+*.dll
+*.so
+*.o
+*.out
