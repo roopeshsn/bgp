@@ -1,0 +1,19 @@
+# GoBGP configuration for testing the BGP FSM speaker.
+#
+# Start GoBGP:    ~/go/bin/gobgpd -f gobgp.toml --api-hosts :50152
+# Check session:  ~/go/bin/gobgp -p 50152 neighbor
+#
+# GoBGP (AS 65002, router ID 10.0.0.2) listens on port 1790
+# and waits for our speaker (AS 65001) to connect.
+
+[global.config]
+  as = 65002
+  router-id = "10.0.0.2"
+  port = 1790
+
+[[neighbors]]
+  [neighbors.config]
+    neighbor-address = "127.0.0.1"
+    peer-as = 65001
+  [neighbors.transport.config]
+    passive-mode = true
