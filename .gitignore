@@ -4,3 +4,4 @@
 *.so
 *.o
 *.out
+/bgp-prefix-analysis/latest-bview.gz
