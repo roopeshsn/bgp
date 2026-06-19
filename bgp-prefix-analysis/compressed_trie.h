@@ -3,6 +3,7 @@
 
 #include "bgp_types.h"
 #include <functional>
+#include <map>
 
 using namespace std;
 
@@ -33,6 +34,7 @@ public:
     size_t plain_trie_memory() const;
 
     void walk(function<void(const Prefix&, uint32_t attr_index)> visitor) const;
+    map<int, int> prefix_length_distribution() const;
 
 private:
     TrieNode* root;

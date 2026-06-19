@@ -259,6 +259,24 @@ int main(int argc, char* argv[]) {
     }
     cout << endl;
 
+    // Prefix length distribution (by subnet mask)
+    cout << "  Prefix length (subnet mask):" << endl;
+    map<int, int> prefix_len_dist = trie.prefix_length_distribution();
+    int total_prefixes_dist = trie.prefix_count();
+    for (int len = 0; len <= 32; len++) {
+        int count = 0;
+        auto it = prefix_len_dist.find(len);
+        if (it != prefix_len_dist.end()) {
+            count = it->second;
+        }
+        double pct = (total_prefixes_dist > 0) ?
+            (double)count / total_prefixes_dist * 100 : 0;
+        cout << "    /" << left << setw(10) << len
+             << right << setw(10) << format_number(count)
+             << "  (" << fixed << setprecision(1) << pct << "%)" << endl;
+    }
+    cout << endl;
+
 
     // ---------------------------------------------------------------
     // Step 6: Best path selection

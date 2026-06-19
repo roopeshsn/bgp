@@ -266,6 +266,15 @@ size_t CompressedTrie::plain_trie_memory() const {
 }
 
 
+map<int, int> CompressedTrie::prefix_length_distribution() const {
+    map<int, int> distribution;
+    function<void(const Prefix&, uint32_t)> counter = [&](const Prefix& p, uint32_t) {
+        distribution[p.length]++;
+    };
+    walk_recursive(root, 0, 0, counter);
+    return distribution;
+}
+
 void CompressedTrie::walk(function<void(const Prefix&, uint32_t attr_index)> visitor) const {
     walk_recursive(root, 0, 0, visitor);
 }
