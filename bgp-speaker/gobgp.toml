@@ -1,0 +1,11 @@
+[global.config]
+  as = 65002
+  router-id = "10.0.0.2"
+  port = 1790
+
+[[neighbors]]
+  [neighbors.config]
+    neighbor-address = "127.0.0.1"
+    peer-as = 65001
+  [neighbors.transport.config]
+    passive-mode = true
